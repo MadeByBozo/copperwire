@@ -58,6 +58,7 @@ window.onload = function() {
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
+    document.addEventListener("touchstart", moveBird);
     document.addEventListener("keydown", restartGame);
 }
 
@@ -70,7 +71,7 @@ function update(){
     
     //Bird
     velocityY += gravity;
-    luckybait.y = 100//Math.max(luckybait.y + velocityY, 0);
+    luckybait.y = Math.max(luckybait.y + velocityY, 0);
     context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckyHeight);
     if(luckybait.y > board.height) gameOver = true;
 

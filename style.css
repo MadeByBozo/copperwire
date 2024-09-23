@@ -18,7 +18,7 @@ body {
 
 /* Gör canvasen flexibel */
 #board {
-    background-image: url(./vannplan2.png);
+    background-image: url('vannplan2.png');
     background-size: cover; /* Se till att bakgrunden täcker canvasen */
     background-position: center;
     width: 100vw; /* Täcker hela bredden */
