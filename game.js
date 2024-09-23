@@ -7,8 +7,8 @@ let context;
 
 //Bird
 let luckyImg;
-let luckyWidth = 74;
-let luckyHeight = 40;
+let luckyWidth = 40;
+let luckyHeight = 74;
 let luckyX = boardWidth/8;
 let luckyY = boardHeight/2;
 let luckybait = {
@@ -60,6 +60,7 @@ window.onload = function() {
     document.addEventListener("keydown", moveBird);
     document.addEventListener("touchstart", moveBird);
     document.addEventListener("keydown", restartGame);
+    document.addEventListener("keyup", stopBird)
 }
 
 function update(){
@@ -70,7 +71,7 @@ function update(){
     context.clearRect(0, 0, board.width, board.height)
     
     //Bird
-    velocityY += gravity;
+    //velocityY += gravity;
     luckybait.y = Math.max(luckybait.y + velocityY, 0);
     context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckyHeight);
     if(luckybait.y > board.height) gameOver = true;
@@ -130,6 +131,13 @@ function moveBird(e){
     if(e.code == "Space" || e.code == "ArrowUp"){
         velocityY = -3
     }
+    if(e.code == "ArrowDown"){
+        velocityY = +3
+    }
+}
+
+function stopBird(e){
+    velocityY = 0;
 }
 
 function detectCollision(a, b){
