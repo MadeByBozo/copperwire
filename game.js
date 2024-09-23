@@ -31,7 +31,7 @@ let bottomPipeImage;
 //Gamephysics
 let velocityX = -1; //Moving left
 let velocityY = 0; //luckybait jumping speed
-let gravity = 0.1;
+let gravity = 0;
 let gameOver = false;
 let score = 0;
 
