@@ -9,8 +9,8 @@ let context;
 let luckyImg;
 let luckyWidth = 40;
 let luckyHeight = 74;
-let luckyX = boardWidth/8;
-let luckyY = boardHeight/2;
+let luckyX = boardWidth/2;
+let luckyY = boardHeight - 100;
 let luckybait = {
     x : luckyX,
     y : luckyY,
@@ -72,7 +72,8 @@ function update(){
     
     //Bird
     //velocityY += gravity;
-    luckybait.y = Math.max(luckybait.y + velocityY, 0);
+    luckybait.x = Math.max(0,luckybait.x + velocityY);
+    luckybait.x = Math.min(boardWidth - luckyWidth ,luckybait.x + velocityY);
     context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckyHeight);
     if(luckybait.y > board.height) gameOver = true;
 
@@ -128,11 +129,11 @@ function placePipes(){
 }
 
 function moveBird(e){
-    if(e.code == "Space" || e.code == "ArrowUp"){
-        velocityY = -3
-    }
-    if(e.code == "ArrowDown"){
+    if(e.code == "ArrowRight"){
         velocityY = +3
+    }
+    if(e.code == "ArrowLeft"){
+        velocityY = -3
     }
 }
 

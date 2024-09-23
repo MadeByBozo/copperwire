@@ -10,7 +10,6 @@ html, body {
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    background-color: skyblue;
     display: flex;
     justify-content: center;
     align-items: center;
