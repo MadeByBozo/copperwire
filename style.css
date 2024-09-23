@@ -1,0 +1,26 @@
+/* Gör hela sidan responsiv */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Förhindrar scrollning */
+}
+
+/* Anpassa bakgrund och stil */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Gör canvasen flexibel */
+#board {
+    background-image: url(./vannplan2.png);
+    background-size: cover; /* Se till att bakgrunden täcker canvasen */
+    background-position: center;
+    width: 100vw; /* Täcker hela bredden */
+    height: 100vh; /* Täcker hela höjden */
+}
