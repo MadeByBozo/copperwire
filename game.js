@@ -96,7 +96,6 @@ function update(){
         context.fillStyle = "black";
         context.font = "25px sans-serif";
         context.fillText("Game over", boardWidth/2 - 55, boardHeight/2);
-        context.fillText("Press ArrowUp to try again", 45, boardHeight/2 + 30);
     }
 }
 
