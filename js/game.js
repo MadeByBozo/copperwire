@@ -32,6 +32,7 @@ let bottomPipeImage;
 let velocityX = -1; //Moving left
 let velocityY = 0; //luckybait jumping speed
 let gravity = 0.08;
+let jumpcounter = 0;
 let gameOver = false;
 let score = 0;
 
@@ -75,6 +76,7 @@ function update(){
     luckybait.y = Math.min(boardHeight - luckyHeight,luckybait.y + velocityY);
     context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckyHeight);
     if(luckybait.y > board.height) gameOver = true;
+    if(luckybait.y > 650) jumpcounter = 0;
 
     //Pipes
     for(let i = 0; i < pipeArray.length; i++){
@@ -83,7 +85,7 @@ function update(){
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
         if(!pipe.passed && luckybait.x > pipe.x + pipe.width) {
             pipe.passed = true;
-            score += 0.5;
+            score += 1;
         }
         if(detectCollision(luckybait, pipe)){
             gameOver = true;
@@ -129,8 +131,10 @@ function placePipes(){
 
 function moveBird(e){
     if(e.code == "ArrowUp"){
-        if(luckybait.y > 650)
-        velocityY = -5
+        if(jumpcounter < 1){
+            velocityY = -5
+            jumpcounter++;
+        }
     }
 }
 
