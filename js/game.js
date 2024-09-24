@@ -45,7 +45,7 @@ window.onload = function() {
 
 
     luckyImg = new Image();
-    luckyImg.src = "../images/luckybait2.png";
+    luckyImg.src = "./images/luckybait2.png";
     luckyImg.onload = function(){
         context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckybait.height)
     }
