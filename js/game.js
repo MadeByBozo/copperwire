@@ -131,9 +131,11 @@ function placePipes(){
 function moveBird(e){
     if(e.code == "ArrowRight"){
         velocityY = +3
+        console.log("right")
     }
     if(e.code == "ArrowLeft"){
         velocityY = -3
+        console.log("left")
     }
 }
 
