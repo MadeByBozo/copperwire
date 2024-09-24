@@ -45,14 +45,14 @@ window.onload = function() {
 
 
     luckyImg = new Image();
-    luckyImg.src = "./luckybait2.png";
+    luckyImg.src = "../images/luckybait2.png";
     luckyImg.onload = function(){
         context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckybait.height)
     }
 
     topPipeImage = new Image();
     bottomPipeImage = new Image();
-    topPipeImage.src = "./koppartråd.png";
+    topPipeImage.src = "../images/koppartråd.png";
     bottomPipeImage.src = "./koppartråd.png";
 
     requestAnimationFrame(update);
