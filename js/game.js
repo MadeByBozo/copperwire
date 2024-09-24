@@ -10,7 +10,7 @@ let luckyImg;
 let luckyWidth = 40;
 let luckyHeight = 74;
 let luckyX = boardWidth/2;
-let luckyY = boardHeight - 100;
+let luckyY = boardHeight - 400;
 let luckybait = {
     x : luckyX,
     y : luckyY,
