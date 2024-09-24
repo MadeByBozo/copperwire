@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
     overflow: hidden; /* Förhindrar scrollning */
 }
 
@@ -13,13 +14,49 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f0f0f0; /* Bakgrundsfärg som fallback om bilden inte laddas */
 }
 
 /* Gör canvasen flexibel */
 #board {
-    background-image: url('../images/vannplan2.jpg');
+    background-image: url('./images/vannplan2.jpg');
     background-size: cover; /* Se till att bakgrunden täcker canvasen */
     background-position: center;
-    width: 100vw; /* Täcker hela bredden */
-    height: 100vh; /* Täcker hela höjden */
+    width: 100%;
+    height: auto; /* Gör så att höjden anpassas efter bredden */
+    max-width: 100vw; /* Begränsa bredden till skärmens bredd */
+    max-height: 100vh; /* Begränsa höjden till skärmens höjd */
+}
+
+/* Media Queries för olika skärmstorlekar */
+@media (max-width: 768px) {
+    /* För mobiler */
+    #board {
+        width: 90%; /* Minska storleken något på mobiler */
+        height: auto; /* Behåll proportionerna */
+    }
+    
+    body {
+        font-size: 14px; /* Minska textstorleken för mobil */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* För surfplattor */
+    #board {
+        width: 80%; /* Anpassa storleken för mellanstora skärmar */
+        height: auto;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+/* För större skärmar */
+@media (min-width: 1025px) {
+    #board {
+        width: 70%; /* Minska storleken något på stora skärmar så det inte blir för stort */
+        height: auto;
+    }
 }
