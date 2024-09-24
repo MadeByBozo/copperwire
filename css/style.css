@@ -19,7 +19,7 @@ body {
 
 /* Gör canvasen flexibel */
 #board {
-    background-image: url('/images/vannplan2.jpg');
+    background-image: url('../images/vannplan2.jpg');
     background-size: cover; /* Se till att bakgrunden täcker canvasen */
     background-position: center;
     width: 100%;

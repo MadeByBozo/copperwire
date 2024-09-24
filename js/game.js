@@ -45,7 +45,7 @@ window.onload = function() {
 
 
     luckyImg = new Image();
-    luckyImg.src = "/images/luckybait2.png";
+    luckyImg.src = "../images/luckybait2.png";
     luckyImg.onload = function(){
         context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckybait.height)
     }
@@ -53,7 +53,7 @@ window.onload = function() {
     topPipeImage = new Image();
     bottomPipeImage = new Image();
     topPipeImage.src = "../images/koppartråd.png";
-    bottomPipeImage.src = "./koppartråd.png";
+    // bottomPipeImage.src = "./koppartråd.png";
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //every 1.5 seconds
