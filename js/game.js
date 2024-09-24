@@ -10,7 +10,7 @@ let luckyImg;
 let luckyWidth = 40;
 let luckyHeight = 74;
 let luckyX = boardWidth/2;
-let luckyY = boardHeight - 400;
+let luckyY = boardHeight - 80;
 let luckybait = {
     x : luckyX,
     y : luckyY,
@@ -20,8 +20,8 @@ let luckybait = {
 
 //Pipes
 let pipeArray = [];
-let pipeWidth = 20;
-let pipeHeight = 40;
+let pipeWidth = 40;
+let pipeHeight = 60;
 let pipeX = boardWidth;
 let pipeY = 0;
 
@@ -31,7 +31,7 @@ let bottomPipeImage;
 //Gamephysics
 let velocityX = -1; //Moving left
 let velocityY = 0; //luckybait jumping speed
-let gravity = 0;
+let gravity = 0.08;
 let gameOver = false;
 let score = 0;
 
@@ -56,7 +56,7 @@ window.onload = function() {
     // bottomPipeImage.src = "./koppartråd.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //every 1.5 seconds
+    setInterval(placePipes, 1600); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
     document.addEventListener("touchstart", moveBird);
     document.addEventListener("keydown", restartGame);
@@ -71,9 +71,8 @@ function update(){
     context.clearRect(0, 0, board.width, board.height)
     
     //Bird
-    //velocityY += gravity;
-    luckybait.x = Math.max(0,luckybait.x + velocityY);
-    luckybait.x = Math.min(boardWidth - luckyWidth ,luckybait.x + velocityY);
+    velocityY += gravity;
+    luckybait.y = Math.min(boardHeight - luckyHeight,luckybait.y + velocityY);
     context.drawImage(luckyImg, luckybait.x, luckybait.y, luckybait.width, luckyHeight);
     if(luckybait.y > board.height) gameOver = true;
 
@@ -105,12 +104,12 @@ function placePipes(){
     if(gameOver){
         return;
     }
-    let randomPipeY = pipeY - pipeHeight/4 - Math.random() * (pipeHeight/2);
+    let randomPipeY = 670 - Math.random() * (pipeHeight*2);
     let openingSpace = boardHeight/4;
     let topPipe = {
         img : topPipeImage,
         x : pipeX,
-        y : 300,
+        y : randomPipeY,
         width : pipeWidth,
         height : pipeHeight,
         passed : false
@@ -129,19 +128,12 @@ function placePipes(){
 }
 
 function moveBird(e){
-    if(e.code == "ArrowRight"){
-        velocityY = +3
-        console.log("right")
-    }
-    if(e.code == "ArrowLeft"){
-        velocityY = -3
-        console.log("left")
+    if(e.code == "ArrowUp"){
+        if(luckybait.y > 650)
+        velocityY = -5
     }
 }
 
-function stopBird(e){
-    velocityY = 0;
-}
 
 function detectCollision(a, b){
     return  a.x < b.x + b.width &&
